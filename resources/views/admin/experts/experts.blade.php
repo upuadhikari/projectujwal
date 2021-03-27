@@ -14,32 +14,35 @@
         @endif
 
         <div class="buttons" style="float: right;">
-            <a href="{{url('admin/programs/add-program')}}" class="button is-primary">Add Program</a>
+            <a href="{{url('admin/experts/add-expert')}}" class="button is-primary">Add Experts</a>
         </div>
-         <h2 style="color:blue">List of Programs</h2>
+         <h2 style="color:blue">List of Experts</h2>
 
          <table border="1px" class="table">
              <tr>
-                 <th>Name</th>
-                 <th>Detail</th>
+             <th>Profile Pic</th>
+                 <th>Expert Name</th>
+                 <th>Experience</th>
+                 <th>Mobile Number</th>
                  <th>Action</th>
 
              </tr>
 
-             @foreach($data as $program)
+             @foreach($data as $expert)
                 <tr>
-                    <td>{{$program->name}}</td>
-                    <td>{{$program->detail}}</td>
+                    <td>{{$expert->name}}</td>
+                    <td>{{$expert->experience}}</td>
+                    <td>{{$expert->mobile}}</td>
                     <td>
                         
-                        <form method="post" action="{{url('admin/programs/delete-program/'.$program->id)}}"  >
-                            <a href="{{url('admin/programs/edit-program/'.$program->id)}}" class="btn btn-primary">Edit </a>
+                        <form method="post" action="{{url('admin/experts/delete-expert/'.$expert->id)}}"  >
+                            <a href="{{url('admin/experts/edit-expert/'.$expert->id)}}" class="btn btn-primary">Edit </a>
                             @csrf
                             <button class="btn btn-danger" >Delete </button>
                         </form>
 
                     </td>
-                    <!-- <td><a href="{{url('admin/program/delete-program/'.$program->id)}}" class="btn btn-default">
+                    <!-- <td><a href="{{url('admin/experts/delete-expert/'.$expert->id)}}" class="btn btn-default">
                         Delete
                     </a></td> -->
                 </tr>

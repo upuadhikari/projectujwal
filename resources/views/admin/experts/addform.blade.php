@@ -3,16 +3,21 @@
 <div class="container">
 
       <form method="POST" 
-      action="{{url('admin/programs/add-program/')}}">
+      action="{{url('admin/experts/add-expert/')}}">
           @csrf
           <div class="field">
-        <label class="label">Program Name</label>
+        <label class="label">Expert Name</label>
         <div class="control">
           <input class="input" type="text" placeholder="ProgramName" name ="name">
         </div>
       </div>
       <div class="field">
-        <label class="label">Program Detail</label>
+        <label class="label">Experience</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="ProgramDetail" name ="detail">
+        </div>
+        <div class="field">
+        <label class="label">Mobile Number</label>
         <div class="control">
           <input class="input" type="text" placeholder="ProgramDetail" name ="detail">
         </div>

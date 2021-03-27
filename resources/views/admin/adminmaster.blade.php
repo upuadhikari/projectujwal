@@ -50,9 +50,15 @@
           
         </div>
       </div>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="">
         <a class="navbar-link" href="/admin/programs">
           Program
+        </a>
+     
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="/admin/experts">
+          Experts
         </a>
      
       </div>

@@ -16,8 +16,7 @@
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="{{asset('assettss/css/animate/animate.min.css')}}" rel="stylesheet">
-        <link href="{{asset('assetts/css/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+        
 
         <!-- Template Stylesheet -->
         <!-- <link href="css/style.css" rel="stylesheet"> -->
@@ -28,7 +27,7 @@
     <body>
        
         <!-- Nav Bar Start -->
-        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="navbar navbar-expand-lg  navbar-dark">
             <div class="container-fluid">
                 <a href="#" class="navbar-brand">Hamro Sath</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -56,21 +55,43 @@
                         @endif
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+                
             </div>
         </div>
         <!-- Nav Bar End -->
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="{{asset('assetts/lib/easing/easing.min.js')}}"></script>
-        <script src="{{asset('assetts/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-        <script src="{{asset('assetts/lib/waypoints/waypoints.min.js')}}"></script>
-        <script src="{{asset('assetts/lib/counterup/counterup.min.js')}}"></script>
-        
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+         <!-- Carousel Start -->
+         <div class="carousel">
+            <div class="container-fluid">
+                <div class="owl-carousel">
+                    <div class="carousel-item">
+                        <div class="carousel-img">
 
-        <!-- Template Javascript -->
-        <script src="{{asset('assetts/lib/js/main.js')}}"></script>
+                            <img src="{{asset('assetts/img/carousel-1.jpg')}}" alt="Image">
+                        </div>
+                        <div class="carousel-text">
+                            <h1>Welcome to HamroSath</h1>
+                            <p>
+                                We are here to provide you the best Counselling Service with top rated experts.                                 
+                                </p>
+                            <div class="carousel-btn">
+                                <a class="btn" href="">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+        
+
+       
         @yield('content')

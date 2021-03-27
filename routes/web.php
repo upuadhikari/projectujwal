@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramController;
+use App\Http\controllers\ExpertController;
 use App\Http\Controllers\ForntEndProgramController;
 
 
@@ -76,6 +77,22 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 
 });
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
+    Route::get('/',[ExpertController::class, 'index']);
+
+    Route::group(['prefix'=>'experts','middleware'=>'auth'],function (){
+
+        Route::get('/',[ExpertController::class, 'index']);
+        Route::post('/updateuserinfo/{id}',[ExpertController::class, 'UpdateExpert']);
+        Route::get('/add-expert',[ExpertController::class, 'addExpert']);
+        Route::post('/add-expert',[ExpertController::class, 'addNewExpert']);
+        Route::get('/edit-expert/{id}',[ExpertController::class, 'editExpert']);
+        Route::post('/edit-expert/{id}',[ExpertController::class, 'updateExpert']);
+        Route::post('/delete-expert/{id}',[ExpertController::class, 'deleteExpert']);
+
+    });
+});
+
 
 Route::get('/',[ForntEndProgramController::class, 'index']);
 

@@ -14,19 +14,19 @@
     @endif
 
   <form method="POST" 
-action="{{url('admin/programs/edit-program/'.$program->id)}}">
+action="{{url('admin/experts/edit-expert/'.$expert->id)}}">
           @csrf
           <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Text input" name ="name" value="{{$program->name}}">
+          <input class="input" type="text" placeholder="Text input" name ="name" value="{{$expert->name}}">
         </div>
       </div>
 
       <div class="field">
         <label class="label">Program Detail</label>
         <div class="control">
-          <input class="input" type="text" placeholder="ProgramDetail" name ="detail">
+          <input class="input" type="text" placeholder name ="detail">
         </div>
     <button class="button is-success" style="margin-top:20px;" >Submit</button>
 

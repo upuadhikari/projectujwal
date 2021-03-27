@@ -58,7 +58,7 @@
         <label >Role:</label>
           <label class="radio">
             <input type="radio" name="role" value="2">
-            Seller
+            Expert
           </label>
           <label class="radio">
             <input type="radio" name="role" value="1">

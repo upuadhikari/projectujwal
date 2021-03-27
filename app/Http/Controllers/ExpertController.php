@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\Expert;
 
 class ExpertController extends Controller
 {
@@ -18,49 +20,45 @@ class ExpertController extends Controller
     }
     public function index(Request $request){
 
-        $data= User::orderBy('id','desc')->where('status',1)->get();
-        return view('admin.user.userview',compact('data'));
-	    //return view('userview', [‘users' => 'data']);
-	    //return view('userview')
-	            // ->with('users', 'data')
-	            // ->with('name', 'value’')
-	    //return view('userview', compact('data1','data2','data3'));
+        $data= Expert::orderBy('id','desc')->where('status',1)->get();
+        return view('admin.experts.experts',compact('data'));
+	    
        }
 
-    public function addUser()
+    public function addExpert()
     {
-        return view('admin.user.addform');
+        return view('admin.experts.addform');
     }
 
-    public function addNewUser(Request $request)
+    public function addNewExpert(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
+            'mobile' => 'required',
         ]);
 
 
-        $extUser = null;
-        $extuser = User::where('email', $request->email)->first();
+        $extexpert = null;
+        $extexpert = Expert::where('name', $request->name)->first();
 
-        if ($extuser) {
-            $user = $extuser;
-            if ($user->status == 3) {
-                $user->name = $request->name;
-                $user->email = $request->email;
-                $user->mobile = $request->mobile;
-                $user->mobile = $request->mobile;
-                $user->role = $request->role;
-                $user->status = $request->status;
-                $user->password = Hash::make(12345678);
+        if ($extexpert) {
+            $expert = $extexpert;
+            if ($expert->status == 3) {
+                $expert->name = $request->name;
+                $expert->experience = $request->experience;
+                $expert->mobile = $request->mobile;
+                // $expert->mobile = $request->mobile;
+                // $expert->role = $request->role;
+                // $expert->status = $request->status;
+                // $expert->password = Hash::make(12345678);
 
                 if ($file = $request->file('profile_pic')) {
-                    $uplodaDesc = $this->uploadFiles($file, 'members', $user->id);
-                    if(File::exists(storage_path('app/public/uploads/members/'). $user->profile_pic)){
-                        File::delete(storage_path('app/public/uploads/members/'). $user->profile_pic);
+                    $uplodaDesc = $this->uploadFiles($file, 'members', $expert->id);
+                    if(File::exists(storage_path('app/public/uploads/members/'). $expert->profile_pic)){
+                        File::delete(storage_path('app/public/uploads/members/'). $expert->profile_pic);
                     }
                     if ( $uplodaDesc) {
-                        $user->profile_pic = $uplodaDesc['filename'];
+                        $expert->profile_pic = $uplodaDesc['filename'];
                     }
                 }
 
@@ -76,23 +74,19 @@ class ExpertController extends Controller
 
         else {
             
-            $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->mobile = $request->mobile;
-            $user->mobile = $request->mobile;
-            $user->role = $request->role;
-            $user->status = $request->status;
-
-            $user->password = Hash::make(12345678);
+            $expert = new Expert;
+            $expert->name = $request->name;
+            // $expert->email = $request->email;
+            $expert->mobile = $request->mobile;
+            $expert->experience=$request->experience;
 
             if ($file = $request->file('profile_pic')) {
-                $uplodaDesc = $this->uploadFiles($file, 'members', $user->id);
-                if(File::exists(storage_path('app/public/uploads/members/'). $user->profile_pic)){
-                    File::delete(storage_path('app/public/uploads/members/'). $user->profile_pic);
+                $uplodaDesc = $this->uploadFiles($file, 'members', $expert->id);
+                if(File::exists(storage_path('app/public/uploads/members/'). $expert->profile_pic)){
+                    File::delete(storage_path('app/public/uploads/members/'). $expert->profile_pic);
                 }
                 if ( $uplodaDesc) {
-                    $user->profile_pic = $uplodaDesc['filename'];
+                    $expert->profile_pic = $uplodaDesc['filename'];
                 }
             }
 
@@ -100,37 +94,38 @@ class ExpertController extends Controller
         }
 
 
-        if ($user->save()) {
+        if ($expert->save()) {
 
-            return redirect('admin/users/')->with('success', 'New User Added Successfully');
+            return redirect('admin/experts/')->with('success', 'New User Added Successfully');
         }
 
-        return redirect('admin/users/')->with('errors', ['Sorry Some Error Occured.Please Try Again']);
+        return redirect('admin/experts/')->with('errors', ['Sorry Some Error Occured.Please Try Again']);
 
     }
 
    
 
-    public function editUser($id)
+    public function editExpert($id)
     {
-        $user = User::where('id', $id)->first();
-        return view('admin.user.editform', compact('user'));
+        $expert = Expert::where('id', $id)->first();
+        return view('admin.experts.editform', compact('expert'));
     }
 
-    public function updateUser(Request $request, $id)
+    public function updateExpert(Request $request, $id)
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
+            'email'=>'required',
+            'mobile' => 'required',
         ]
         );
 
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->mobile = $request->mobile;
-        $user->role = $request->role;
-        $user->status = $request->status;
+        $expert = Expert::findOrFail($id);
+        $expert->name = $request->name;
+        $expert->email = $request->email;
+        $expert->mobile = $request->mobile;
+        $expert->Experience= $request->role;
+        $expert->status = $request->status;
 
 
 
@@ -146,13 +141,13 @@ class ExpertController extends Controller
     }
 
 
-    public function deleteUser($id)
+    public function deleteExpert($id)
     {
-        $user = User::findOrFail($id);
-        $user->status = 3;
-        $result = $user->save();
+        $expert = Expert::findOrFail($id);
+        $expert->status = 3;
+        $result= $expert->save();
 
-        $data= User::orderBy('id','desc')->where('status',1)->get();
+        $data= Expert::orderBy('id','desc')->where('status',1)->get();
         if ($result) {
         	return view('admin.user.userview',compact('data'));
         }
