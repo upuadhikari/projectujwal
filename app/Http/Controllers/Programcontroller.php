@@ -5,7 +5,7 @@ use App\Models\Program;
 use Illuminate\Http\Request;
 use Auth;
 
-class Programcontroller extends Controller
+class ProgramController extends Controller
 {
     public function __construct()
     {
@@ -39,7 +39,22 @@ class Programcontroller extends Controller
             $program = new Program;
             $program->name = $request->name;
             $program->detail = $request->detail;
+            if ($request->hasFile('picture')) {
+                $request->validate([
+                    'picture' =>'mimes:jpg,png,bmp',
+                ]);
+                $image = $request->file('picture');
+                $imgExt = $image->getClientOriginalExtension();
+                $fullname = time().".".$imgExt;
+                $result = $image->storeAs('images/',$fullname);
+            }
 
+        else{
+            $fullname = "avatar7.png";              
+        }
+
+        $program->picture = $fullname;
+           
 
         if ($program->save()) {
             return redirect('admin/programs/')->with('success', 'New Program added Successfully');
@@ -56,7 +71,6 @@ class Programcontroller extends Controller
         $program = Program::where('id', $id)->first();
         return view('admin.program.editform', compact('program'));
     }
-
     public function updateprogram(Request $request, $id)
     {
         $this->validate($request, [
@@ -69,7 +83,9 @@ class Programcontroller extends Controller
         $program =  Program::findorfail($id);
         $program->name = $request->name;
         $program->detail = $request->detail;
+        $program->picture = $request->picture;
 
+        
         
         if ($program->save()) {
             

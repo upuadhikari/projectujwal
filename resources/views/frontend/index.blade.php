@@ -51,8 +51,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="section-header">
-                            <p>Learn About Us</p>
-                            <h2>25 Years Experience</h2>
+                        <h2>LEARN ABOUT US</h2>
+                            <p>Life is a purposeful action</p>
+                            
                         </div>
                         <div class="about-text">
                             <p>
@@ -68,33 +69,6 @@
             </div>
         </div>
         <!-- About End -->
-
-
-        <!-- Service Start -->
-        <div class="service">
-            <div class="container">
-                <div class="section-header">
-                    <p>Consulting Services</p>
-                    <h2>Our Best Consulting Services</h2>
-                </div>
-               @foreach($data as $programdetail)
-                    <div class="col-lg-3 col-md-3">
-                        <div class="service-item">
-                            <img src="{{asset('assetts/img/icon-8.png')}}" alt="Icon">
-                            <h3>{{$programdetail->name}}</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Phasellus nec pretium ornare velit non
-                            </p>
-                            <a href="{{url('homeviewprograms/view-program/'.$programdetail->id)}}">Read More</a>
-                        </div>
-
-                    </div>
-                @endforeach
-                   
-            </div>
-        </div>
-        <!-- Service End -->
-
 
         <!-- Feature Start -->
         <div class="feature">
@@ -153,8 +127,8 @@
         <div class="team">
             <div class="container">
                 <div class="section-header">
-                    <p>Meet Our Advisors</p>
-                    <h2>Our Professional Consulting Team</h2>
+                    <p>Meet Our Experts</p>
+                    <h2>Our Professional Experts</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -164,67 +138,12 @@
                             </div>
                             <div class="team-text">
                                 <h2>Donald John</h2>
-                                <p>Founder & CEO</p>
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
+                                <a class="btn" href="">Create Appointment</a>
+                                
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{asset('assetts/img/team-2.jpg')}}" alt="Team Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Adam Phillips</h2>
-                                <p>Chef Executive</p>
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{asset('assetts/img/team-3.jpg')}}" alt="Team Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Thomas Olsen</h2>
-                                <p>Chef Advisor</p>
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{asset('assetts/img/team-4.jpg')}}" alt="Team Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>James Alien</h2>
-                                <p>Advisor</p>
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -236,38 +155,9 @@
             <div class="container">
                 <div class="section-header">
                     <p>Get In Touch</p>
-                    <h2>Get In Touch For Any Query</h2>
+                    <h2>Contact Us for Improvement</h2>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-md-5">
-                        <div class="contact-info">
-                            <div class="contact-icon">
-                                <i class="fa fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Our Head Office</h3>
-                                <p>123 Street, New York, USA</p>
-                            </div>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-icon">
-                                <i class="fa fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Call for Help</h3>
-                                <p>+012 345 6789</p>
-                            </div>
-                        </div>
-                        <div class="contact-info">
-                            <div class="contact-icon">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Email for Information</h3>
-                                <p>info@example.com</p>
-                            </div>
-                        </div>
-                    </div>
+                
                     <div class="col-md-7">
                         <div class="contact-form">
                             <div id="success"></div>
@@ -298,40 +188,6 @@
             </div>
         </div>
         <!-- Contact End -->
-
-
-        <!-- Blog Start -->
-        <div class="blog">
-            <div class="container">
-                <div class="section-header">
-                    <p>Counselling Blog</p>
-                    <h2>Latest From Our Counselling Blog</h2>
-                </div>
-                <div class="owl-carousel blog-carousel">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="{{asset('assetts/img/blog-1.jpg')}}" alt="Blog">
-                        </div>
-                        <div class="blog-content">
-                            <h2 class="blog-title">Lorem ipsum dolor sit amet</h2>
-                            <div class="blog-meta">
-                                <i class="fa fa-list-alt"></i>
-                                <a href="">Category</a>
-                                <i class="fa fa-calendar-alt"></i>
-                                <p>01-Jan-2045</p>
-                            </div>
-                            <div class="blog-text">
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Neca pretim miura bitur facili ornare velit non vulpte liqum metus tortor. Lorem ipsum dolor sit amet elit. Neca pretim miura bitur facili ornare velit non vulpte liqum metus tortor
-                                </p>
-                                <a class="btn" href="">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                   
-        </div>
-        <!-- Blog End -->
-
 
         <!-- Footer Start -->
         <div class="footer">

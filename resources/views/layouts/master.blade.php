@@ -41,10 +41,11 @@
                        
                         @if (Route::has('login'))
                                 @auth
-                                <a href="{{route('blog')}}" class="nav-item nav-link">Blog</a>
+                                <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
+                                    <a href="{{route('blog')}}" class="nav-item nav-link">Blog</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
+                                    
                                 <button class="nav-item nav-link">Log out</button>
                                 </form>
                                 @else

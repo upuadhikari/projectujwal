@@ -63,11 +63,11 @@
      
       </div>
     </div>
-    <img src="{{asset('/images/'.Auth::user()->profile_pic)}}" style="height:20px; width:20px;">
+
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">
-          
+        <img src="{{asset('/images/'.Auth::user()->profile_pic)}}" height="50px" width="40px">
           
         </div>
       </div>

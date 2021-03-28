@@ -18,6 +18,8 @@ class CreateProgramsTable extends Migration
             $table->string('name');
             $table->string('detail');
             $table->string('picture')->nullable();
+
+            
         });
     }
 

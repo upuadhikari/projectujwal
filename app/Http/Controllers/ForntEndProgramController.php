@@ -41,7 +41,7 @@ class ForntEndProgramController extends Controller
     public function viewProgram($id)
     {
         $program = Program::where('id', $id)->first();
-        return view('programdetail', compact('program'));
+        return view('frontend.programdetail', compact('program'));
     }
 
 

@@ -20,16 +20,18 @@
 
          <table border="1px" class="table">
              <tr>
+             <th>Picture</th>
                  <th>Name</th>
                  <th>Detail</th>
                  <th>Action</th>
 
              </tr>
-
              @foreach($data as $program)
                 <tr>
+                <td><img src="{{asset('/images/'.$program->picture)}}" width="50px" height="40px"></td>
                     <td>{{$program->name}}</td>
                     <td>{{$program->detail}}</td>
+                  
                     <td>
                         
                         <form method="post" action="{{url('admin/programs/delete-program/'.$program->id)}}"  >

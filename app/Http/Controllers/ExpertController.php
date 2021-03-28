@@ -76,13 +76,13 @@ class ExpertController extends Controller
             $expert->mobile = $request->mobile;
             $expert->experience=$request->experience;
 
-            if ($file = $request->file('profile_pic')) {
+            if ($file = $request->file('picture')) {
                 $uplodaDesc = $this->uploadFiles($file, 'members', $expert->id);
-                if(File::exists(storage_path('app/public/uploads/members/'). $expert->profile_pic)){
-                    File::delete(storage_path('app/public/uploads/members/'). $expert->profile_pic);
+                if(File::exists(storage_path('app/public/uploads/members/'). $expert->picture)){
+                    File::delete(storage_path('app/public/uploads/members/'). $expert->picture);
                 }
                 if ( $uplodaDesc) {
-                    $expert->profile_pic = $uplodaDesc['filename'];
+                    $expert->picture = $uplodaDesc['filename'];
                 }
             }
 
@@ -92,7 +92,7 @@ class ExpertController extends Controller
 
         if ($expert->save()) {
 
-            return redirect('admin/experts/')->with('success', 'New User Added Successfully');
+            return redirect('admin/experts/')->with('success', 'New Expert Added Successfully');
         }
 
         return redirect('admin/experts/')->with('errors', ['Sorry Some Error Occured.Please Try Again']);
@@ -111,29 +111,28 @@ class ExpertController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email'=>'required',
+            'experience'=>'required',
             'mobile' => 'required',
         ]
         );
 
         $expert = Expert::findOrFail($id);
         $expert->name = $request->name;
-        $expert->email = $request->email;
         $expert->mobile = $request->mobile;
-        $expert->Experience= $request->role;
-        $expert->status = $request->status;
+        $expert->experience= $request->experience;
+        // $expert->status = $request->status;
 
 
 
         
-        if ($user->save()) {
+        if ($expert->save()) {
            
-             return redirect('admin/users/')->with('success', 'User Updated Successfully.');
+             return redirect('admin/experts/')->with('success', 'Expert Updated Successfully.');
 
 
         }
 
-        return redirect('admin/users/edit-user/' . $id)->with('errors', ['Sorry Some Error Occured.Please Try Again']);
+        return redirect('admin/experts/edit-experts/' . $id)->with('errors', ['Sorry Some Error Occured.Please Try Again']);
     }
 
 

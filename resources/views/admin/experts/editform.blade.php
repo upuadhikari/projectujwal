@@ -24,9 +24,15 @@ action="{{url('admin/experts/edit-expert/'.$expert->id)}}">
       </div>
 
       <div class="field">
-        <label class="label">Program Detail</label>
+        <label class="label">Experience</label>
         <div class="control">
-          <input class="input" type="text" placeholder name ="detail">
+          <input class="input" type="text" placeholder name ="experience" value ="{{$expert->experience}}">
+        </div>
+
+        <div class="field">
+        <label class="label">Mobile Number</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Mobile Number" name ="mobile" value ="{{$expert->mobile}}">
         </div>
     <button class="button is-success" style="margin-top:20px;" >Submit</button>
 

@@ -26,7 +26,7 @@ action="{{url('admin/programs/edit-program/'.$program->id)}}">
       <div class="field">
         <label class="label">Program Detail</label>
         <div class="control">
-          <input class="input" type="text" placeholder="ProgramDetail" name ="detail">
+          <input class="input" type="text" placeholder="Program Detail" name="detail" value ="{{$program->detail}}">
         </div>
     <button class="button is-success" style="margin-top:20px;" >Submit</button>
 
