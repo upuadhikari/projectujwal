@@ -21,8 +21,8 @@ class CreateExpertsTable extends Migration
             $table->string('profile_pic')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('program_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('program_id')->references('id')->on('programs');
+            $table->foreign('user_id')->references('id')->on('users')->nullable();
+            $table->foreign('program_id')->references('id')->on('programs')->nullable();
         });
     }
 

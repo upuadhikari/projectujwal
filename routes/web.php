@@ -19,29 +19,21 @@ use App\Http\Controllers\ForntEndProgramController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('', function () {
-//     return view('welcome');
-// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/client', function () {
-    return view('layouts.client');
-});
 
-Route::get('/expert', function () {
-    return view('layouts.expert');
-});
+Route::get('/service', 'App\Http\Controllers\ForntEndProgramController@service')->name('service');
+Route::get('/about', 'App\Http\Controllers\ForntEndProgramController@about')->name('about');
+Route::get('/blog', 'App\Http\Controllers\ForntEndProgramController@blog')->name('blog');
+Route::get('/program', 'App\Http\Controllers\ForntEndProgramController@program')->name('program');
+
+
 
 require __DIR__.'/auth.php';
-// Route::get('/123/{id}',[UserController::class, 'editUser']);
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('/',[UserController::class, 'index']);
 
@@ -79,7 +71,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 });
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('/',[ExpertController::class, 'index']);
-
     Route::group(['prefix'=>'experts','middleware'=>'auth'],function (){
 
         Route::get('/',[ExpertController::class, 'index']);
@@ -95,12 +86,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 
 Route::get('/',[ForntEndProgramController::class, 'index']);
-
-Route::group(['prefix'=>'homeviewprograms','middleware'=>'auth'],function (){
-
-    Route::get('/',[ForntEndProgramController::class, 'index']);
-    Route::get('/view-program/{id}',[ForntEndProgramController::class, 'viewProgram']);
-    Route::post('/edit-program/{id}',[ForntEndProgramController::class, 'updateprogram']);
-   
-
+    Route::group(['prefix'=>'homeviewprograms','middleware'=>'auth'],function (){
+        Route::get('/',[ForntEndProgramController::class, 'index']);
+        Route::get('/view-program/{id}',[ForntEndProgramController::class, 'viewProgram']);
+        Route::post('/edit-program/{id}',[ForntEndProgramController::class, 'updateprogram']);
 });

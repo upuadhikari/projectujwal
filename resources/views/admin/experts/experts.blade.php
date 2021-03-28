@@ -20,7 +20,7 @@
 
          <table border="1px" class="table">
              <tr>
-             <th>Profile Pic</th>
+                    <th>Profile Pic</th>
                  <th>Expert Name</th>
                  <th>Experience</th>
                  <th>Mobile Number</th>
@@ -30,6 +30,7 @@
 
              @foreach($data as $expert)
                 <tr>
+                    <td>{{$expert->profile_pic}} </td>
                     <td>{{$expert->name}}</td>
                     <td>{{$expert->experience}}</td>
                     <td>{{$expert->mobile}}</td>

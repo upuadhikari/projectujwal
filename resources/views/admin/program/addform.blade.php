@@ -14,19 +14,20 @@
       <div class="field">
         <label class="label">Program Detail</label>
         <div class="control">
-          <input class="input" type="text" placeholder="ProgramDetail" name ="detail">
+        <input class="input" type="text" placeholder="ProgramName" name ="name">
         </div>
       </div>
 
 
     
 
-<!--   <div class="input-group">
+  <div class="field">
+  <label class="label">Program Picture</label>
   <div class="custom-file">
     <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="profile_pic">
     <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
   </div>
-</div> -->
+</div>
 
     
 

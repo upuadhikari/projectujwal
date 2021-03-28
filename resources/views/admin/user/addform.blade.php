@@ -33,11 +33,14 @@
         </div>
       </div>
 
+      <div class="field">
+        <label class="label">Profile Picture</label>
   <div class="input-group">
   <div class="custom-file">
     <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="profile_pic">
     <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
   </div>
+</div>
 </div>
 
       <div class="field">

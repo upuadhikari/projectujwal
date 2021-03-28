@@ -47,12 +47,8 @@ class ExpertController extends Controller
                 $expert->name = $request->name;
                 $expert->experience = $request->experience;
                 $expert->mobile = $request->mobile;
-                // $expert->mobile = $request->mobile;
-                // $expert->role = $request->role;
-                // $expert->status = $request->status;
-                // $expert->password = Hash::make(12345678);
 
-                if ($file = $request->file('profile_pic')) {
+            if ($file = $request->file('profile_pic')) {
                     $uplodaDesc = $this->uploadFiles($file, 'members', $expert->id);
                     if(File::exists(storage_path('app/public/uploads/members/'). $expert->profile_pic)){
                         File::delete(storage_path('app/public/uploads/members/'). $expert->profile_pic);
@@ -61,8 +57,8 @@ class ExpertController extends Controller
                         $expert->profile_pic = $uplodaDesc['filename'];
                     }
                 }
-
-            } 
+            }
+             
             else{
                 $this->validate($request, [
                     'email' => 'required|unique:users',

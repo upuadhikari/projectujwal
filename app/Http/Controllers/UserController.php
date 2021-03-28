@@ -28,12 +28,7 @@ class UserController extends Controller
 
         $data= User::orderBy('id','desc')->where('status',1)->get();
         return view('admin.user.userview',compact('data'));
-	    //return view('userview', [‘users' => 'data']);
-	    //return view('userview')
-	            // ->with('users', 'data')
-	            // ->with('name', 'value’')
-	    //return view('userview', compact('data1','data2','data3'));
-       }
+	}
 
     public function addUser()
     {
