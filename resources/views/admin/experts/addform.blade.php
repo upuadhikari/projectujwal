@@ -22,12 +22,9 @@
           <input class="input" type="text" placeholder="ProgramDetail" name ="mobile">
         </div>
 
-        <div class="field">
-        <label class="label">Profile Picture</label>
-        <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="picture">
-    <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
-  </div>
+        <label for="myfile">Select files:</label>
+        <input type="file" id="myfile" name="picture" multiple><br><br>
+
         
       </div>
  <button class="button is-success">Submit</button>

@@ -12,23 +12,14 @@
                 {{ session('success') }}
             </div>
         @endif
-       
-        <form style="float: right;" method="POST" 
-          action="{{url('admin/users/search-user/')}}" >
-              @csrf
-                  <input class="input is-normal" type="text" placeholder="Normal input" style="width: 300px; margin-left:10px;" name="searched">
-                  <button class="btn btn-primary" >Search</button>
-
-        </form>
 
         <div class="buttons" style="float: right;">
             <a href="{{url('admin/users/add-user')}}" class="button is-primary">Add User</a>
         </div>
-         <h2 style="color:blue">List of users</h2>
+         <h2 style="color:blue">Search result </h2>
 
          <table border="1px" class="table">
              <tr>
-             <th>Profile Pic</th>
                  <th>Name</th>
                  <th>Email</th>
                  <th>Action</th>
@@ -37,7 +28,6 @@
 
              @foreach($data as $user)
                 <tr>
-                <td><img src="{{asset('/images/'.$user->profile_pic)}}" width="50px" height="40px"></td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
@@ -58,6 +48,5 @@
 
          </table>
         <!--  <p>Red background </p> -->
-        {{ $data->links("pagination::bootstrap-4")}}
 </div>
  @stop

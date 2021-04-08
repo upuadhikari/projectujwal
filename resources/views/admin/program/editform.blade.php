@@ -28,11 +28,12 @@ action="{{url('admin/programs/edit-program/'.$program->id)}}">
         <div class="control">
           <input class="input" type="text" placeholder="Program Detail" name="detail" value ="{{$program->detail}}">
         </div>
+        
     <button class="button is-success" style="margin-top:20px;" >Submit</button>
 
       </div>
 
-
+    
       
 <!--   <div class="input-group">
   <div class="custom-file">

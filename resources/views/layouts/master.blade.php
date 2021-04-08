@@ -46,7 +46,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     
-                                <button class="nav-item nav-link">Log out</button>
+                                <button class="nav-item nav-link btn-danger btn ">Log out</button>
                                 </form>
                                 @else
                                 <a href="{{route('program')}}" class="nav-item nav-link">Program</a>
@@ -100,3 +100,8 @@
 
        
         @yield('content')
+            <!-- <script>
+if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script> -->

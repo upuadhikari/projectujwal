@@ -33,15 +33,10 @@
         </div>
       </div>
 
-      <div class="field">
-        <label class="label">Profile Picture</label>
-  <div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="profile_pic">
-    <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
-  </div>
-</div>
-</div>
+   
+
+<label for="myfile">Select files:</label>
+  <input type="file" id="myfile" name="profile_pic" multiple><br><br>
 
       <div class="field">
         <label class="label">Status:</label>
@@ -66,6 +61,10 @@
           <label class="radio">
             <input type="radio" name="role" value="1">
             Normal User
+          </label>
+          <label class="radio">
+            <input type="radio" name="role" value="1">
+            Admin
           </label>
         </div>
       </div>

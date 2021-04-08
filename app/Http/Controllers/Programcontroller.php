@@ -19,7 +19,7 @@ class ProgramController extends Controller
     }
     public function index(Request $request){
 
-        $data= Program::orderBy('id','desc')->where('status','<=',1)->get();
+        $data= Program::orderBy('id','desc')->where('status','<=',1)->paginate(5);
         return view('admin.program.program',compact('data'));
 	}
 
@@ -107,8 +107,15 @@ class ProgramController extends Controller
 
         $data= Program::orderBy('id','desc')->where('status','<=',1)->get();
         if ($result) {
-            return view('admin.program.program', compact('data'));
+            return redirect('/admin/programs');
         }
         
     }
+    public function searchProgram(Request $request){
+
+        $searched=$request->searched;
+        $data= Program::Where('name','Like',"%$searched%")->get();
+        return view('admin.program.searchprogram',compact('data','searched'));
+    }
+    
 }

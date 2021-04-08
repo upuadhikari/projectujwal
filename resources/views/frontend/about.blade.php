@@ -100,14 +100,16 @@
             <h2>Our Professional Consulting Team</h2>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6">
+        @foreach($data as $expert)
+            <div class="col-lg-3 col-md-3">
                 <div class="team-item">
                     <div class="team-img">
-                        <img src="{{asset('assetts/img/team-1.jpg')}}" alt="Team Image">
+                        <img src="{{asset('/images/'.$expert->profile_pic)}}" alt="Team Image">
                     </div>
                     <div class="team-text">
-                        <h2>Donald John</h2>
-                        <p>Founder & CEO</p>
+                        <h2>{{$expert->name}}</h2>
+                        <a class="btn" href="">Create Appointment</a>
+                       
                         <div class="team-social">
                             <a href=""><i class="fab fa-twitter"></i></a>
                             <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -117,57 +119,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assetts/img/team-2.jpg')}}" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Adam Phillips</h2>
-                        <p>Chef Executive</p>
-                        <div class="team-social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assetts/img/team-3.jpg')}}" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Thomas Olsen</h2>
-                        <p>Chef Advisor</p>
-                        <div class="team-social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{asset('assetts/img/team-4.jpg')}}" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>James Alien</h2>
-                        <p>Advisor</p>
-                        <div class="team-social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        @endforeach
+            
         </div>
     </div>
 </div>

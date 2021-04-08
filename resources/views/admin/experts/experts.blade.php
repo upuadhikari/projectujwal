@@ -30,7 +30,7 @@
 
              @foreach($data as $expert)
                 <tr>
-                    <td>{{$expert->profile_pic}} </td>
+                     <td><img src="{{asset('/images/'.$expert->profile_pic)}}" width="50px" height="40px"></td>
                     <td>{{$expert->name}}</td>
                     <td>{{$expert->experience}}</td>
                     <td>{{$expert->mobile}}</td>
@@ -52,5 +52,6 @@
 
          </table>
         <!--  <p>Red background </p> -->
+        {{ $data->links("pagination::bootstrap-4")}}
 </div>
  @stop

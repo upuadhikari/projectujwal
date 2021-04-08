@@ -16,17 +16,11 @@ class UserController extends Controller
 {
 	 public function __construct()
     {
-    	$this->middleware(function ($request, $next) {  
-        if (!Auth::user()->role == 3) {
-        	dd("error");
-            abort(404);
-        }
-            return $next($request);
-        });
+    	
     }
     public function index(Request $request){
 
-        $data= User::orderBy('id','desc')->where('status',1)->get();
+        $data= User::orderBy('id','desc')->where('status',1)->paginate(5);
         return view('admin.user.userview',compact('data'));
 	}
 
@@ -57,16 +51,21 @@ class UserController extends Controller
                 $user->status = $request->status;
                 $user->password = Hash::make(12345678);
 
-                if ($file = $request->file('profile_pic')) {
-                    $uplodaDesc = $this->uploadFiles($file, 'members', $user->id);
-                    if(File::exists(storage_path('app/public/uploads/members/'). $user->profile_pic)){
-                        File::delete(storage_path('app/public/uploads/members/'). $user->profile_pic);
-                    }
-                    if ( $uplodaDesc) {
-                        $user->profile_pic = $uplodaDesc['filename'];
-                    }
+                if ($request->hasFile('profile_pic')) {
+                    $request->validate([
+                        'profile_pic' =>'mimes:jpg,png,bmp',
+                    ]);
+                    $image = $request->file('profile_pic');
+                    $imgExt = $image->getClientOriginalExtension();
+                    $fullname = time().".".$imgExt;
+                    $result = $image->storeAs('images/',$fullname);
                 }
-
+    
+            else{
+                $fullname = "default.jpg";              
+            }
+    
+            $user->profile_pic = $fullname;
             } 
             else{
                 $this->validate($request, [
@@ -162,10 +161,17 @@ class UserController extends Controller
 
         $data= User::orderBy('id','desc')->where('status',1)->get();
         if ($result) {
-        	return view('admin.user.userview',compact('data'));
+        	return redirect('/admin/users');
         }
-        
+
     }
 
+    public function searchUser(Request $request){
+
+        $searched=$request->searched;
+        $data= User::where('status','<',3)->orWhere('name','Like',"%$searched%")->orWhere('email','Like',"%$searched%")->orWhere('mobile','Like',"%$searched%")->get();
+        return view('admin.user.searchuserview',compact('data','searched'));
+    }
+    
 }
 

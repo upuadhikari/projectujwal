@@ -20,7 +20,7 @@ class ExpertController extends Controller
     }
     public function index(Request $request){
 
-        $data= Expert::orderBy('id','desc')->where('status',1)->get();
+        $data= Expert::orderBy('id','desc')->where('status',1)->paginate(5);
         return view('admin.experts.experts',compact('data'));
 	    
        }
@@ -75,22 +75,23 @@ class ExpertController extends Controller
             // $expert->email = $request->email;
             $expert->mobile = $request->mobile;
             $expert->experience=$request->experience;
-
-            if ($file = $request->file('picture')) {
-                $uplodaDesc = $this->uploadFiles($file, 'members', $expert->id);
-                if(File::exists(storage_path('app/public/uploads/members/'). $expert->picture)){
-                    File::delete(storage_path('app/public/uploads/members/'). $expert->picture);
-                }
-                if ( $uplodaDesc) {
-                    $expert->picture = $uplodaDesc['filename'];
-                }
+            if ($request->hasFile('picture')) {
+                $request->validate([
+                    'picture' =>'mimes:jpg,png,bmp',
+                ]);
+                $image = $request->file('picture');
+                $imgExt = $image->getClientOriginalExtension();
+                $fullname = time().".".$imgExt;
+                $result = $image->storeAs('images/',$fullname);
             }
 
-
+        else{
+            $fullname = "avatar7.png";              
         }
-
-
-        if ($expert->save()) {
+        $expert->profile_pic = $fullname;
+    }
+           
+    if ($expert->save()) {
 
             return redirect('admin/experts/')->with('success', 'New Expert Added Successfully');
         }
@@ -120,8 +121,7 @@ class ExpertController extends Controller
         $expert->name = $request->name;
         $expert->mobile = $request->mobile;
         $expert->experience= $request->experience;
-        // $expert->status = $request->status;
-
+        
 
 
         

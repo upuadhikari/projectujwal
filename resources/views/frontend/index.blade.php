@@ -123,31 +123,7 @@
         </div>
         <!-- Feature End -->
         
-                <!-- Team Start -->
-        <div class="team">
-            <div class="container">
-                <div class="section-header">
-                    <p>Meet Our Experts</p>
-                    <h2>Our Professional Experts</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{asset('assetts/img/team-1.jpg')}}" alt="Team Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Donald John</h2>
-                                <a class="btn" href="">Create Appointment</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- Team End -->
+      
         
         
         <!-- Contact Start -->

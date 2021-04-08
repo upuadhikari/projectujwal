@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   
   <!-- laravel css   -->
-  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('/css/style.css')}}" rel="stylesheet">
 
   <!-- boostrap css cdn -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -63,15 +63,32 @@
      
       </div>
     </div>
-
+    
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">
         <img src="{{asset('/images/'.Auth::user()->profile_pic)}}" height="50px" width="40px">
-          
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="/admin/experts">
+        {{Auth::user()->name}}
+        </a>
+        <div class="navbar-dropdown is-boxed">
+        <a class="navbar-link" href="/admin/experts">
+          Home
+        </a>
+
+        <form action="{{route('logout')}}" method="POST">
+        @csrf
+        <input type="submit" value="Logout" class="btn">
+        </form>
+     
+     
+      </div>
         </div>
       </div>
     </div>
+   
   </div>
  
 </nav>

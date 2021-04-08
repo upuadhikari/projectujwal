@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Program;
+use App\Models\Expert;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class ForntEndProgramController extends Controller
 {
@@ -23,7 +28,7 @@ class ForntEndProgramController extends Controller
        }
        
        public function about(Request $request){
-        $data= Program::orderBy('id','desc')->where('status','<=',1)->get();
+        $data= Expert::orderBy('id','desc')->where('status','<=',1)->get();
         return view('frontend.about',compact('data'));
 	  }
        
@@ -41,8 +46,38 @@ class ForntEndProgramController extends Controller
     public function viewProgram($id)
     {
         $program = Program::where('id', $id)->first();
-        return view('frontend.programdetail', compact('program'));
+        $comments = Comment::where('status',1)->where('program_id',$id)->with('user')->orderby('created_at', 'desc')->get();
+
+        return view('frontend.programdetail', compact('program','comments'));
     }
+
+    public function Comment(Request $request ,$id)
+    {
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->program_id = $id;
+        $comment->user_id = Auth::user()->id;
+        $comment->user_name = Auth::user()->name;
+        $program = Program::where('id', $id)->first();
+        if($comment->save()){
+            $comments = Comment::where('status',1)->where('program_id',$id)->with('user')->orderby('created_at', 'desc')->get();
+            
+            return redirect('/homeviewprograms/view-program/'.$id);
+        }
+       
+    }
+    public function deletecomment(Request $request ,$id)
+    {
+        $comment = Comment::findOrFail($id);
+        dd($comment);
+        $result = $comment->save();
+
+        $comment= Comment::orderBy('id','desc')->where('status',1)->get();
+        if ($result) {
+        	return redirect('/homeviewprograms/view-program/');
+        }
+    }
+
 
 
 }
