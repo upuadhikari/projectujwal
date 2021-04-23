@@ -87,7 +87,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
 
 
 Route::get('/',[ForntEndProgramController::class, 'index']);
-    Route::group(['prefix'=>'homeviewprograms','middleware'=>'auth'],function (){
+        Route::group(['prefix'=>'homeviewprograms','middleware'=>'auth'],function (){
         Route::get('/',[ForntEndProgramController::class, 'index']);
         Route::get('/view-program/{id}',[ForntEndProgramController::class, 'viewProgram']);
         // Route::post('/edit-program/{id}',[ForntEndProgramController::class, 'updateprogram']);
