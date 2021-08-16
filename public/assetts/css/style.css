@@ -95,7 +95,6 @@ a:focus {
     .navbar {
         position: absolute;
         width: 100%;
-        /* top: 35px; */
         padding: 20px 60px;
         background: #092a49;
         z-index: 9;
@@ -133,9 +132,7 @@ a:focus {
     }
 }
 
-/*******************************/
-/********** Hero CSS ***********/
-/*******************************/
+
 .carousel {
     position: relative;
     width: 100%;
@@ -184,6 +181,44 @@ a:focus {
     object-fit: cover;
 }
 
+.form-group button{
+    margin-top: 5px;
+}
+.time{
+margin-top: 8px;
+font-size: 12px;
+}
+
+.comment{
+    font-size: 20px;
+    text-transform:capitalize;
+    
+    
+}
+.formmm{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.edit{
+font-size: 14px;
+    border: 2px solid green;
+    border-radius: 8px;
+    padding: 2px 14px;
+}
+.expert{
+    margin-bottom: 20px;
+}
+.del{
+    font-size: 14px;
+    border: 2px solid red;
+    border-radius: 8px;
+}
+
+.font-medium-username{
+    font-size: 30px;
+    text-transform:capitalize;
+    color: darkcyan;
+}
 .carousel .carousel-text {
     position: absolute;
     max-width: 700px;

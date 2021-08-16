@@ -17,7 +17,7 @@ class CreateExpertsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('experience');
-            $table->string('mobile')->nullable();     
+            $table->string('mobile')->nullable();
             $table->string('profile_pic')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('program_id')->unsigned();

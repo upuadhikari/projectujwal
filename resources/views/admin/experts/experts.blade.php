@@ -1,57 +1,57 @@
 @extends('admin.adminmaster')
 @section('content')
 <div class="container">
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('errors') }}
-            </div>
-        @endif
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('errors') }}
+    </div>
+    @endif
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
 
-        <div class="buttons" style="float: right;">
-            <a href="{{url('admin/experts/add-expert')}}" class="button is-primary">Add Experts</a>
-        </div>
-         <h2 style="color:blue">List of Experts</h2>
+    <div class="buttons" style="float: right;">
+        <a href="{{url('admin/experts/add-expert')}}" class="button is-primary">Add Experts</a>
+    </div>
+    <h2 style="color:blue">List of Experts</h2>
 
-         <table border="1px" class="table">
-             <tr>
-                    <th>Profile Pic</th>
-                 <th>Expert Name</th>
-                 <th>Experience</th>
-                 <th>Mobile Number</th>
-                 <th>Action</th>
+    <table border="1px" class="table">
+        <tr>
+            <th>Profile Pic</th>
+            <th>Expert Name</th>
+            <th>Experience</th>
+            <th>Mobile Number</th>
+            <th>Action</th>
 
-             </tr>
+        </tr>
 
-             @foreach($data as $expert)
-                <tr>
-                     <td><img src="{{asset('/images/'.$expert->profile_pic)}}" width="50px" height="40px"></td>
-                    <td>{{$expert->name}}</td>
-                    <td>{{$expert->experience}}</td>
-                    <td>{{$expert->mobile}}</td>
-                    <td>
-                        
-                        <form method="post" action="{{url('admin/experts/delete-expert/'.$expert->id)}}"  >
-                            <a href="{{url('admin/experts/edit-expert/'.$expert->id)}}" class="btn btn-primary">Edit </a>
-                            @csrf
-                            <button class="btn btn-danger" >Delete </button>
-                        </form>
+        @foreach($data as $expert)
+        <tr>
+            <td><img src="{{asset('/images/'.$expert->profile_pic)}}" width="50px" height="40px"></td>
+            <td>{{$expert->name}}</td>
+            <td>{{$expert->experience}}</td>
+            <td>{{$expert->mobile}}</td>
+            <td>
 
-                    </td>
-                    <!-- <td><a href="{{url('admin/experts/delete-expert/'.$expert->id)}}" class="btn btn-default">
+                <form method="post" action="{{url('admin/experts/delete-expert/'.$expert->id)}}">
+                    <a href="{{url('admin/experts/edit-expert/'.$expert->id)}}" class="btn btn-primary">Edit </a>
+                    @csrf
+                    <button class="btn btn-danger">Delete </button>
+                </form>
+
+            </td>
+            <!-- <td><a href="{{url('admin/experts/delete-expert/'.$expert->id)}}" class="btn btn-default">
                         Delete
                     </a></td> -->
-                </tr>
-             @endforeach
+        </tr>
+        @endforeach
 
 
-         </table>
-        <!--  <p>Red background </p> -->
-        {{ $data->links("pagination::bootstrap-4")}}
+    </table>
+    <!--  <p>Red background </p> -->
+    {{ $data->links("pagination::bootstrap-4")}}
 </div>
- @stop
+@stop
